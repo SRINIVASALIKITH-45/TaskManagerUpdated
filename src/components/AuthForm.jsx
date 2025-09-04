@@ -1,6 +1,7 @@
 // src/components/AuthForm.jsx
 import React, { useState } from "react";
- // optional extra styling
+
+const url = "https://taskmanagerupdated-backend.onrender.com";
 
 function AuthForm({ onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,7 +21,7 @@ function AuthForm({ onAuthSuccess }) {
     const endpoint = isLogin ? "login" : "signup";
 
     try {
-      const res = await fetch(`http://localhost:5000/api/auth/${endpoint}`, {
+      const res = await fetch(`${url}/api/auth/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

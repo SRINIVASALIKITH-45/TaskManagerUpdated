@@ -5,7 +5,8 @@ import TaskList from "./components/TaskList";
 import AuthForm from "./components/AuthForm";
 import "./styles.css";
 import "./ContactUs.css";
-// optional if separate styling for About
+
+const url = "https://taskmanagerupdated-backend.onrender.com";
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -22,7 +23,7 @@ function App() {
 
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/tasks", {
+        const res = await fetch(`${url}/api/tasks`, {
           headers: { Authorization: token },
         });
         const data = await res.json();
@@ -38,7 +39,7 @@ function App() {
   // Add Task
   const addTask = async (task) => {
     try {
-      const res = await fetch("http://localhost:5000/api/tasks", {
+      const res = await fetch(`${url}/api/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -56,7 +57,7 @@ function App() {
   // Update Task
   const updateTask = async (id, updatedTask) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      const res = await fetch(`${url}/api/tasks/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +77,7 @@ function App() {
   // Toggle Done
   const toggleDone = async (id, completed) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      const res = await fetch(`${url}/api/tasks/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -96,7 +97,7 @@ function App() {
   // Delete Task
   const deleteTask = async (id) => {
     try {
-      await fetch(`http://localhost:5000/api/tasks/${id}`, {
+      await fetch(`${url}/api/tasks/${id}`, {
         method: "DELETE",
         headers: { Authorization: token },
       });
